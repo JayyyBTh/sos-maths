@@ -1,0 +1,341 @@
+/* message d'erreur */
+.errorText
+{
+	color: #F00;
+}
+
+/* Bo�te a message d'erreur */
+.errorBox
+{
+	border: 1px solid #F00; 
+
+	margin-left: 5px;
+	margin-right: 10px;
+
+	padding: 5px; 
+
+	background-color: #FFC0C0; 
+
+	color: #9A0000; 
+	font-weight: bold; 
+}
+
+#errorBox a
+{
+	color: #000;
+}
+
+/* Bo�bo�te a infos (sans blague, ^^) */
+.infosBox
+{
+	border: 1px solid #243DDD;
+	
+	background-color: #dbe0fc;
+	
+	padding: 5px;
+	
+	color: #003299;
+	font-weight: bold;
+}
+
+/* Bo�te a message succes - Une fois n'est pas coutume ;-) */
+.successBox
+{
+	border: 1px solid #0F0; 
+
+	margin-left: 5px;
+	margin-right: 10px;
+
+	padding: 5px; 
+
+	background-color: #b9ffd3; 
+
+	color: #050; 
+	font-weight: bold; 
+}
+
+/* Boîte de confirmation */
+.confirmationBox
+{
+	border: 1px solid #243DDD;
+	background-color: #DBE0FC; 
+
+	padding: 5px;
+
+	width: 450px;
+
+	margin: auto;
+}
+
+.small
+{
+	font-size: 12px;
+}
+
+table#repetiteurRegister, table.repetiteurTermBlock td
+{
+	vertical-align: top;
+}
+
+span.error
+{
+	color: #F00;
+}
+
+span.subtitle
+{
+	font-weight: bold;
+	font-size: 110%;
+}
+
+td.infos0
+{
+	background-color: #f1e4e4;
+	padding: 2px;
+}
+
+td.infos1
+{
+	padding: 2px;
+}
+
+td.infosC0
+{
+	background-color: #f1e4e4;
+	padding: 2px;
+	text-align: center;
+}
+
+td.infosC1
+{
+	padding: 2px;
+	text-align: center;
+}
+
+thead td
+{
+	font-weight: bold;
+	padding: 2px 4px 2px 4px;
+}
+
+#student_searchResults thead td
+{
+	font-size: 115%;
+}
+
+table#student_searchResults td
+{
+	text-align: left;
+}
+
+table#student_searchResults a
+{
+	color: #000;
+}
+
+/* Expand/collapse transition (replaces Scriptaculous BlindDown/BlindUp) */
+#practical, #teaching, #rep
+{
+	overflow: hidden;
+	max-height: 2000px;
+	transition: max-height 0.3s ease-in-out;
+}
+#practical.collapsed, #teaching.collapsed, #rep.collapsed
+{
+	max-height: 0;
+}
+
+/* Section header (title + expand/collapse button) */
+.section-header
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+/* Student search form layout */
+.student-filters
+{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.filter-box
+{
+	flex: 1 1 450px;
+	max-width: 100%;
+	padding: 10px;
+	background-color: #f1e4e4;
+	overflow: hidden;
+}
+
+/* Student sidebar */
+#studentFixed
+{
+	position: sticky;
+	top: 20px;
+	padding: 10px;
+	border: 1px solid #000;
+	background-color: #fff1f1;
+	width: 310px;
+	flex-shrink: 0;
+}
+
+/* Search results layout */
+.results-layout
+{
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.results-main
+{
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.results-sidebar
+{
+	position: sticky;
+	top: 20px;
+	width: 420px;
+	max-height: 80vh;
+	overflow-y: auto;
+	flex-shrink: 0;
+	padding: 10px;
+	border: 1px solid #000;
+	background-color: #fff1f1;
+}
+
+/* Responsive tables */
+table.repetiteurTermBlock,
+table#repetiteurRegister
+{
+	width: 100%;
+}
+
+table#student_searchResults
+{
+	width: 100%;
+}
+
+textarea
+{
+	max-width: 100%;
+}
+
+/* Subject indentation */
+.subject-indent
+{
+	padding-left: 30px;
+}
+
+/* Touch-friendly controls */
+input[type="checkbox"]
+{
+	width: 18px;
+	height: 18px;
+	margin: 3px;
+	vertical-align: middle;
+}
+
+input[type="submit"],
+button
+{
+	min-height: 44px;
+	padding: 10px 20px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+select
+{
+	min-height: 36px;
+	font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"]
+{
+	min-height: 36px;
+	padding: 6px 10px;
+	font-size: 14px;
+}
+
+/* Detail close button - hidden on desktop */
+.detail-close
+{
+	display: none;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+	/* Student search: stack vertically */
+	.student-filters {
+		flex-direction: column;
+	}
+
+	.filter-box {
+		flex: 1 1 100%;
+	}
+
+	/* Sidebar becomes normal flow on mobile */
+	#studentFixed {
+		position: static !important;
+		width: 100% !important;
+		left: auto !important;
+		top: auto !important;
+		margin-top: 20px;
+	}
+
+	/* Search results: stack vertically */
+	.results-layout {
+		flex-direction: column;
+	}
+
+	.results-sidebar {
+		position: static;
+		width: 100%;
+		max-height: none;
+	}
+
+	/* Tutor detail as modal overlay on mobile */
+	.results-sidebar.detail-active {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		max-height: 100vh;
+		z-index: 1000;
+		overflow-y: auto;
+		padding: 20px;
+		margin: 0;
+		border-radius: 0;
+	}
+
+	.detail-close {
+		display: block;
+		margin-top: 15px;
+		padding: 10px 20px;
+		background: #B50D0D;
+		color: #FFF;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 14px;
+	}
+
+	/* Form tables: allow stacking */
+	table.repetiteurTermBlock td[style*="width: 200px"],
+	table#repetiteurRegister td[style*="width: 200px"] {
+		width: auto !important;
+	}
+}

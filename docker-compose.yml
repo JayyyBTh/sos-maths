@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: sos_maths
+      POSTGRES_USER: sos
+      POSTGRES_PASSWORD: sos
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./install/00_init_role.sql:/docker-entrypoint-initdb.d/00_role.sql:ro
+      - ./install/sosmaths-data.sql:/docker-entrypoint-initdb.d/01_data.sql:ro
+
+volumes:
+  dbdata:
+

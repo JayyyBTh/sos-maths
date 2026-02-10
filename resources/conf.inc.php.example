@@ -1,0 +1,25 @@
+<?php
+/*
+	Configuration file
+	Copy this file to conf.inc.php and fill in your values
+*/
+
+// Database
+$config['db_host'] = 'db';  // Use 'db' for Docker, or 'localhost' for local PostgreSQL
+$config['db_user'] = 'your_database_user';
+$config['db_psw'] = 'your_database_password';
+$config['db_db'] = 'sos_maths';
+
+$config['offline'] = false; // If true, offline mode
+
+
+$page['config']['baseUrl'] = 'http://localhost:8080/'; // Base url for the website
+
+// Emails
+$page['config']['mailSMTP'] = true;
+$page['config']['mailSMTPHost'] = 'your_smtp_host';  // e.g., smtp.gmail.com
+$page['config']['mailSMTPUser'] = 'your_smtp_username';
+$page['config']['mailSMTPPsw'] = 'your_smtp_password';
+$page['config']['mailFrom'] = 'your_from_email@example.com';
+$page['config']['mailSMTPPort'] = '587';  // Common ports: 587 (TLS), 465 (SSL), 25
+?>
