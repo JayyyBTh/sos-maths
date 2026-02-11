@@ -1,13 +1,6 @@
 # Configuration files with credentials
 resources/conf.inc.php
 
-# Claude Code personal settings
-.claude/
-
-# Docker volumes and data
-install/00_init_role.sql
-install/sosmaths-data.sql
-
 # Template cache (if generated)
 templates/cache/
 templates/*.php.cache
