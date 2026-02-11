@@ -18,6 +18,33 @@ Database is auto-initialized from `install/database.sql` on first container star
 
 There is no test suite, no linter, and no build tool. PHP files are served directly by Apache.
 
+## Version Control
+
+**Repository:** https://github.com/JayyyBTh/sos-maths (private)
+
+**Initial setup (first time):**
+```bash
+git clone https://github.com/JayyyBTh/sos-maths.git
+cd sos-maths
+cp resources/conf.inc.php.example resources/conf.inc.php
+# Edit resources/conf.inc.php with your database and SMTP credentials
+docker-compose up --build
+```
+
+**Protected files (excluded from Git):**
+- `resources/conf.inc.php` — Contains credentials (use `conf.inc.php.example` as template)
+- `.claude/` — Personal Claude Code settings
+- `install/00_init_role.sql` and `install/sosmaths-data.sql` — Temporary dev database files
+
+**Git workflow:**
+```bash
+git status              # Check what's changed
+git add <files>         # Stage changes
+git commit -m "message" # Commit with descriptive message
+git push                # Push to GitHub
+git pull                # Pull latest changes
+```
+
 ## Architecture
 
 **Routing:** `index.php` is the single entry point. The `?p=` query parameter selects a page key (e.g., `acc`, `stu`, `rep`) from `$listePages`, which maps to a controller file in `includes/`.
