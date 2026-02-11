@@ -54,15 +54,82 @@ There is no test suite, no linter, and no build tool. PHP files are served direc
 
 ## Database
 
-PostgreSQL with 8 tables. Core tables: `users` (tutor profiles), `repetiteur_term` (semester offerings), plus detail tables for availability days, languages, locations, and subjects. Full schema in `install/database.sql`.
+PostgreSQL 13, auto-initialized from `install/database.sql` on first container start (via Docker's `docker-entrypoint-initdb.d` mechanism). The Docker Compose file creates a named volume `dbdata` so data persists across restarts. Use `docker-compose down -v` to destroy the volume and start fresh.
+
+**Connection:** The app connects via PDO in `index.php` using credentials from `resources/conf.inc.php`. The Docker default user/password is `sos`/`sos` with database `sos_maths`. These must match between `docker-compose.yml` and `conf.inc.php`.
+
+**Schema — 9 tables:**
+
+| Table | Purpose |
+|---|---|
+| `users` | Tutor profiles (username, name, email, password hash, section, study level, activation status) |
+| `users_activation` | Pending email activation keys (deleted once activated) |
+| `repetiteur_term` | Semester offerings — one row per tutor per term (fee, availability, comments) |
+| `repetiteur_term_subject` | Subjects a tutor teaches (references `repetiteur_term.id`) |
+| `repetiteur_term_availibilityday` | Days of the week a tutor is available |
+| `repetiteur_term_language` | Languages a tutor can teach in |
+| `repetiteur_term_place` | Locations (home, EPFL, other) |
+| `repetiteur_term_placecomment` | Free-text location comment |
+
+**Semester convention:** Terms are stored as a year + letter: `a` = autumn (August–January), `p` = spring (February–July). For example, `2025a` is autumn 2025. The current/next term is computed automatically in `repetiteur.term.class.php::computeTerms()` based on the server date.
+
+**No migrations framework.** Schema changes must be applied manually via SQL. To connect to the running database:
+
+```bash
+docker-compose exec db psql -U sos sos_maths
+```
+
+**Seeding data for development:** The schema file creates empty tables. To test with sample data, insert tutors and term records directly via SQL after the container is running.
+
+## Email
+
+The app sends three types of emails via SMTP (using the bundled `classes/class.phpmailer.php`):
+
+1. **Account activation** — Sent when a tutor registers. Contains a unique activation link (`?p=rep&do=activate&key=...&id=...`). The account cannot log in until activated.
+2. **Password reset** — Sent when a tutor requests a password reset.
+3. **Student contact** — Sent when a student contacts a tutor through the platform.
+
+Email templates are in `templates/mails/` (HTML `.tpl` + plain text `_text.tpl` variants).
+
+**SMTP configuration** is in `resources/conf.inc.php`:
+
+```php
+$page['config']['mailSMTP'] = true;
+$page['config']['mailSMTPHost'] = 'smtp.example.com';
+$page['config']['mailSMTPUser'] = 'user@example.com';
+$page['config']['mailSMTPPsw'] = 'password';
+$page['config']['mailFrom'] = 'noreply@example.com';
+$page['config']['mailSMTPPort'] = '587';
+```
+
+If `mailSMTP` is set to `false`, PHP falls back to the local `mail()` function (unlikely to work in Docker without a local MTA).
+
+**Email domain restriction:** By default, only `@epfl.ch`, `@a3.epfl.ch`, and `@alumni.epfl.ch` addresses are accepted for tutor registration (regex in `classes/repetiteur.class.php` line ~186). To adapt for another institution, change this regex to match your allowed email domain(s).
+
+**Testing emails locally:** Docker does not include an SMTP server. Options:
+- Use an external SMTP service (Gmail, SendGrid, Mailgun, etc.)
+- Run a local catch-all mail server like [MailHog](https://github.com/mailhog/MailHog) or [Mailpit](https://github.com/axllent/mailpit) — add it as a service in `docker-compose.yml` and point `mailSMTPHost` to it
 
 ## Configuration
 
-Configuration lives in `resources/conf.inc.php` (excluded from version control). Use `resources/conf.inc.php.example` as a template. Key settings:
+Configuration lives in `resources/conf.inc.php` (excluded from version control). Copy `resources/conf.inc.php.example` to get started.
 
-- Database host, name, user, password
-- SMTP server, port, credentials
-- Base URL
+| Setting | Description | Docker default |
+|---|---|---|
+| `$config['db_host']` | Database hostname | `db` (Docker service name) |
+| `$config['db_user']` | Database user | `sos` |
+| `$config['db_psw']` | Database password | `sos` |
+| `$config['db_db']` | Database name | `sos_maths` |
+| `$config['offline']` | Maintenance mode flag | `false` |
+| `$page['config']['baseUrl']` | Public URL of the site | `http://localhost:8080/` |
+| `$page['config']['mailSMTP']` | Use SMTP for emails | `true` |
+| `$page['config']['mailSMTPHost']` | SMTP server hostname | — |
+| `$page['config']['mailSMTPUser']` | SMTP username | — |
+| `$page['config']['mailSMTPPsw']` | SMTP password | — |
+| `$page['config']['mailFrom']` | Sender email address | — |
+| `$page['config']['mailSMTPPort']` | SMTP port (587/465/25) | `587` |
+
+**Important:** The database credentials in `conf.inc.php` must match the `POSTGRES_*` environment variables in `docker-compose.yml`.
 
 ## Modifying Subjects
 
