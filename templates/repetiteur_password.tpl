@@ -9,7 +9,7 @@
             <td><input type="text" name="pseudo" value="{pseudo}" maxlength="16" /></td>
         </tr>
         <tr>
-            <td style="width: 200px; padding-bottom: 20px;">Email</span><br /><span class="small">(email utilis� lors de l'inscription)</span></td>
+            <td style="width: 200px; padding-bottom: 20px;">Email</span><br /><span class="small">(email utilisé lors de l'inscription)</span></td>
             <td><input type="text" name="email" value="{email}" maxlength="128" /></td>
         </tr>
     </table><br />
