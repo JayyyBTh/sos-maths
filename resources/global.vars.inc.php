@@ -20,11 +20,11 @@ $globalVariables['section'] = array(
 
 $globalVariables['levelStudies'] = array(
 	'0' => array('CMS', 'CMS'),
-	'1' => array('BA1', 'Première de Bachelor'),
-	'2' => array('BA2', 'Deuxième de Bachelor'),
-	'3' => array('BA3', 'Troisième de Bachelor'),
-	'4' => array('MA1', 'Première année de Master'),
-	'5' => array('MA2', 'Deuxième année de Master'),
+	'1' => array('BA1-2', 'Première de Bachelor'),
+	'2' => array('BA3-4', 'Deuxième de Bachelor'),
+	'3' => array('BA5-6', 'Troisième de Bachelor'),
+	'4' => array('MA1-2', 'Première année de Master'),
+	'5' => array('MA3-4', 'Deuxième année de Master'),
 	'6' => array('MA', 'Master obtenu'),
 	'7' => array('PHD', 'Doctorat obtenu'));
 
