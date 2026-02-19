@@ -10,23 +10,23 @@
             <td><input type="text" name="pseudo" value="{pseudo}" maxlength="16" /></td>
         </tr>
         <tr>
-            <td colspan="2" style="padding-bottom: 20px;"><span class="small">(minimum 3 caract�res, maximum 16; caract�res autoris�s: a-z, 0-9)</span></td>
+            <td colspan="2" style="padding-bottom: 20px;"><span class="small">(minimum 3 caractères, maximum 16; caractères autorisés: a-z, 0-9)</span></td>
         </tr>
         <tr>
             <td style="width: 200px;"><span class="{nameClass}">Nom</span></td>
             <td><input type="text" name="name" value="{name}" maxlength="32" /></td>
         </tr>
         <tr>
-            <td style="width: 200px;"><span class="{forenameClass}">Pr�nom</span></td>
+            <td style="width: 200px;"><span class="{forenameClass}">Prénom</span></td>
             <td><input type="text" name="forename" value="{forename}" maxlength="32" /></td>
         </tr>
         <tr>
-            <td style="width: 200px; padding-bottom: 20px;"><span class="{emailClass}">Email</span><br /><span class="small">(seules les adresses @epfl.ch, @alumni.epfl.ch et @a3.epfl.ch sont accept�es; <a href="index.php?p=faq#repEmail" target="_blank">pourquoi?</a>)</span></td>
+            <td style="width: 200px; padding-bottom: 20px;"><span class="{emailClass}">Email</span><br /><span class="small">(seules les adresses @epfl.ch, @alumni.epfl.ch et @a3.epfl.ch sont acceptées; <a href="index.php?p=faq#repEmail" target="_blank">pourquoi?</a>)</span></td>
             <td><input type="text" name="email" value="{email}" maxlength="128" /></td>
         </tr>
         
         <tr>
-            <td style="width: 200px;"><span class="{passwordClass}">Mot de passe</span><br /><span class="small">(au moins 6 caract�res)</span></td>
+            <td style="width: 200px;"><span class="{passwordClass}">Mot de passe</span><br /><span class="small">(au moins 6 caractères)</span></td>
             <td><input type="password" name="password1" value="{password1}" maxlength="32" /></td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@
         </tr>
         
         <tr>
-            <td style="width: 200px; padding-bottom: 20px;"><span class="{levelStudiesClass}">Niveau d'�tude</span></td>
+            <td style="width: 200px; padding-bottom: 20px;"><span class="{levelStudiesClass}">Niveau d'étude</span></td>
             <td>
                 <select name="levelStudies" id="levelSelect">
                 <!-- BEGIN levelStudiesOpt -->
@@ -58,7 +58,7 @@
         
         <tr>
             <td style="width: 200px; padding-bottom: 20px;"><span class="{conditionsClass}">Conditions d'utilisation</span></td>
-            <td><input type="checkbox" name="conditions" value="1" {conditionsChecked} /> En cochant la case ci-contre, vous attestez avoir pris connaissance des <a href="index.php?p=cdt">conditions d'utilisation de SOS-Maths</a> et d�clarez les accepter.</td>
+            <td><input type="checkbox" name="conditions" value="1" {conditionsChecked} /> En cochant la case ci-contre, vous attestez avoir pris connaissance des <a href="index.php?p=cdt">conditions d'utilisation de SOS-Maths</a> et déclarez les accepter.</td>
         </tr>
     </table>
     

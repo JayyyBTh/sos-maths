@@ -67,6 +67,7 @@ class repetiteurTerm
 
 		// ---------------------------------
 		// add ou upt?
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 		$q = $pdo->prepare('SELECT id FROM repetiteur_term WHERE userId=? AND annee=? AND term=?');
 		if (!$q->execute(array($this->userId, $this->term[0], $this->term[1])))
 		{
