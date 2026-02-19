@@ -4,7 +4,7 @@ Bonjour {forename},<br />
 Si le lien ne fonctionne pas, vous pouvez vous rendre à l'adresse suivante:<br />
 {baseurl}/index.php?p=rep&do=activate&key={key}&id={id}<br /><br />
 
-Une fois votre compte activé veuillez vous reconnectez pour selectionner vos matières pour ce semestre/le semestre suivant.
+Une fois votre compte activé, veuillez vous reconnecter pour sélectionner vos matières pour ce semestre/le semestre suivant.<br /><br />
 
 Cordialement,<br /><br />
 &nbsp; &nbsp; &nbsp; &nbsp; L'équipe SOS-Maths
