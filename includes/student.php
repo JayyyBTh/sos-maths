@@ -48,7 +48,10 @@ function writeMain()
 		return writeDisplayForm($stu);
 	}
 	
-	logActivity('student_contact', $id, 'Contact envoyé par ' . $stu->data['emailContact']);
+	if ($id)
+		logActivity('student_contact', $id, $stu->data['pseudo'] . ' contacté par ' . $stu->data['emailContact']);
+	else
+		logActivity('student_contact', null, 'SOS-Maths contacté par ' . $stu->data['emailContact']);
 
 	global $tpl;
 	$tpl->assign_var('MAIN_CONTENT', '<br />Email envoyé avec succès.<br />');

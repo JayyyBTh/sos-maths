@@ -91,7 +91,11 @@ function activateMain()
 		
 	if (!$pdo->commit())
 		return displayErrorBox('REPETITEUR_ACTIVATION');
-		
+
+	$q = $pdo->prepare('SELECT pseudo FROM users WHERE id=?');
+	$pseudo = ($q && $q->execute(array($id))) ? $q->fetchColumn() : null;
+	logActivity('activation', $id, $pseudo);
+
 	global $tpl;
 	$tpl->assign_var('MAIN_CONTENT', '<br />Votre profil a été activé avec succès.<br />Vous pouvez maintenant vous <a href="index.php?p=rep">connecter</a>.<br />');
 }

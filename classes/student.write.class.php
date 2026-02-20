@@ -18,7 +18,7 @@ class studentWrite
 	{
 		global $pdo;
 		
-		$q = $pdo->prepare('SELECT forename, name, email FROM users WHERE id=?');
+		$q = $pdo->prepare('SELECT pseudo, forename, name, email FROM users WHERE id=?');
 		if (!$q->execute(array($id)))
 		{
 			$this->error = 'GET_DATA';
