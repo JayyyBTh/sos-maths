@@ -418,6 +418,7 @@ class repetiteur
 			return false;
 		}
 		
+		logActivity('registration', null, $this->data['pseudo'] . ' <' . $this->data['email'] . '>');
 		mailSend('account_activation' , 'SOS-Maths - Activation du compte', $vars, array(), $this->data['email']);
 
 		return true;
@@ -538,7 +539,8 @@ class repetiteur
 			$this->error = 'REPETITEUR_PASSWORD_RESET_DB';
 			return false;
 		}
-		
+
+		logActivity('password_reset', $this->id, $this->data['pseudo'] . ' <' . $this->data['email'] . '>');
 		return true;
 	}
 }
