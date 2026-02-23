@@ -14,7 +14,7 @@ body {
 	padding: 0;
 	background: #FFFFFF;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 13px;
+	font-size: 16px;
 	color: #5B5B5B;
 	min-height: 100vh;
 	display: flex;
@@ -63,7 +63,7 @@ a:hover {
 }
 
 .container {
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 15px;
@@ -77,7 +77,7 @@ a:hover {
 }
 
 #header {
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 15px;
@@ -203,7 +203,7 @@ a:hover {
 	padding: 10px 20px 10px 20px;
 	text-decoration: none;
 	text-align: center;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: 300;
 	color: #FFFFFF;
 	border: none;
@@ -236,7 +236,7 @@ a:hover {
 /* Page */
 
 #page {
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 30px 15px 0 15px;
@@ -422,7 +422,7 @@ a:hover {
 
 #footer-content {
 	overflow: hidden;
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 50px 15px;
@@ -506,7 +506,7 @@ a:hover {
 
 #banner {
 	margin: 0 auto;
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	height: auto;
 	min-height: 200px;
@@ -558,7 +558,7 @@ ul.style1 .first {
 }
 
 #featured-content {
-	max-width: 1000px;
+	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 15px 30px 15px;
@@ -700,9 +700,6 @@ ul.style1 .first {
 
 /* Phone (< 480px) */
 @media screen and (max-width: 480px) {
-	body {
-		font-size: 14px;
-	}
 
 	#logo h1 {
 		font-size: 1.6em;
