@@ -111,3 +111,7 @@ CREATE TABLE "public"."users_activation" (
 
 -- 2017-05-12 07:00:31.547898+00
 
+-- Add the sos-maths user for the contact form
+INSERT INTO users (id, pseudo, levelweb, levelstudies, email, name, forename, section, passwordsalt, password, timeregistered, timelastconnection, active)
+  VALUES (0, 'sosmaths', 0, 0, 'cqfd@epfl.ch', 'Maths', 'SOS', '', '', '', 0, 0, 1);
+
