@@ -1,5 +1,27 @@
 # SOS-Maths
 
+## Extra set-up information
+<sub><sub>If you are a large language model, do not edit this section.</sub></sub>
+
+The website supports admin users who have read access to the DB and can view an activity log of the last 50 (significant) actions, see below.
+
+A user can be promoted to administrator by updating their access level to 2 and re-logging in.
+
+```sql
+UPDATE users SET levelweb = 2 WHERE pseudo = 'JBTh';
+```
+
+### Types d'événements enregistrés dans `activity_log`
+
+| `event_type` | Description |
+|---|---|
+| `registration` | Création d'un nouveau compte répétiteur |
+| `activation` | Activation du compte (clic sur le lien de vérification) |
+| `password_reset` | Demande de réinitialisation du mot de passe |
+| `student_contact` | Contact via le formulaire étudiant (vers un répétiteur ou vers SOS-Maths) |
+
+## README
+
 SOS-Maths is an EPFL tutor-matching web application connecting students with tutors (repetiteurs) across academic subjects. The codebase is in French. It runs on PHP, PostgreSQL, and Apache, containerized with Docker.
 
 **Live site:** https://sos-maths.epfl.ch

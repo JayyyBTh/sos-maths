@@ -189,5 +189,15 @@ if (!defined('__FUNCS_INC_PHP__'))
 
 		return (@$email->Send() ? true : false);
 	}
+
+	function logActivity($event_type, $user_id = null, $details = null)
+	{
+		global $pdo;
+		if (!isset($pdo)) return;
+		$q = $pdo->prepare('INSERT INTO activity_log (event_type, user_id, details, created_at)
+		                    VALUES (?, ?, ?, cast(extract(epoch from current_timestamp) as integer))');
+		if ($q === false) return;
+		$q->execute(array($event_type, $user_id, $details));
+	}
 }
 ?>

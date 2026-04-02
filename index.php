@@ -40,7 +40,8 @@ $listePages = array(
 			'about'		=>	array( 'displayItem' => true, 'file' => 'about.php', 'level' => 0, 'state' => 'Off', 'text' => 'A propos' ),
 			'offline'	=>	array( 'displayItem' => false, 'file' => 'offline.php', 'level' => 0, 'state' => 'Off', 'text' => '' ),
 			'error'		=>	array( 'displayItem' => false, 'file' => 'error.php', 'level' => 0, 'state' => 'Off', 'text' => ''  ),
-			'404'		=>	array( 'displayItem' => false, 'file' => '404.php', 'level' => 0, 'state' => 'Off', 'text' => '' )	
+			'404'		=>	array( 'displayItem' => false, 'file' => '404.php', 'level' => 0, 'state' => 'Off', 'text' => '' ),
+			'mod'		=>	array( 'displayItem' => true, 'file' => 'moderation.php', 'level' => 2, 'state' => 'Off', 'text' => 'Modération' )
 		);
 
 if( !isset( $listePages[ $page['current'] ] ) ) // si la page qu'on aimerait afficher n'existe pas
